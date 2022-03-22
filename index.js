@@ -1,0 +1,1 @@
+alert("Play at your own risk");
