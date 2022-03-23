@@ -36,3 +36,8 @@ function checkSum() {
     messageEl.textContent = message;
     // alert(message);
 }
+
+function newCard() {
+
+    alert("new card button pressed");
+}
