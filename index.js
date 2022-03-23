@@ -20,8 +20,19 @@ let messageEl = document.getElementById("message-el");
 let sumEl = document.querySelector("#sum-el");
 let cardsEl = document.querySelector(".cards-el");
 
-function checkSum() {
-    cardsEl.textContent = "Cards: " + firstcard + ", " + secondcard;
+let cardsArray = [];
+
+function checkSum(incomingcard) {
+    // cardsEl.textContent = "Cards: " + firstcard + ", " + secondcard;
+
+    if (incomingcard == null) {
+        cardsArray.push(firstcard);
+        cardsArray.push(secondcard);
+    }
+
+    cardsArray.push(incomingcard);
+    cardsEl.textContent = "Cards: " + cardsArray;
+
     sumEl.textContent = "Sum: " + sum;
     if (sum <= 20) {
         message = "Do you want to draw a new card ?";
@@ -30,6 +41,7 @@ function checkSum() {
         message = "Wohoo! you got a blackJack!";
     } else {
         isOutOfGame = true;
+        disableNewCardBtn();
         message = "You are out of the game";
     }
 
@@ -37,7 +49,17 @@ function checkSum() {
     // alert(message);
 }
 
-function newCard() {
+function disableNewCardBtn() {
+    if (isOutOfGame) {
+        alert("You are out of the game");
+        document.querySelector("#new-card").disabled = true;
+    }
+}
 
-    alert("new card button pressed");
+function resetAndPlayAgain() {}
+
+function newCard() {
+    let newCard = Math.floor(Math.random() * (12 - 2) + 2);
+    sum += newCard;
+    checkSum(newCard);
 }
