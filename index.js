@@ -6,8 +6,12 @@ if (age < 22) {
     alert("Entry allowed");
 }
 
-let firstcard = Math.floor(Math.random() * (12 - 2) + 2);
-let secondcard = Math.floor(Math.random() * (12 - 2) + 2);
+let firstcard = getRandomCard();
+let secondcard = getRandomCard();
+
+function getRandomCard() {
+    return Math.floor(Math.random() * (12 - 2) + 2);
+}
 
 // let firstcard = 11;
 // let secondcard = 10;
@@ -71,7 +75,7 @@ function playAgain() {
 }
 
 function newCard() {
-    let newCard = Math.floor(Math.random() * (12 - 2) + 2);
+    let newCard = getRandomCard();
     sum += newCard;
     renderGame(newCard);
 }
