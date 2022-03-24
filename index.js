@@ -6,6 +6,14 @@ if (age < 22) {
     alert("Entry allowed");
 }
 
+//player object
+let player = {
+    name: "Arnav",
+    coins: 185
+}
+let playerEl = document.querySelector("#player-el");
+playerEl.innerHTML = player.name + ": $" + player.coins;
+
 let firstcard = getRandomCard();
 let secondcard = getRandomCard();
 
@@ -18,6 +26,8 @@ function getRandomCard() {
         return 10;
     }
     return x;
+
+    // return Math.floor(Math.random() * 13) + 1;
 }
 
 // let firstcard = 11;
@@ -35,8 +45,6 @@ let cardsArray = [];
 
 function renderGame(incomingcard) {
     // cardsEl.textContent = "Cards: " + firstcard + ", " + secondcard;
-
-
 
     if (incomingcard == null) {
         cardsArray.push(firstcard);
