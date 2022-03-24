@@ -10,7 +10,14 @@ let firstcard = getRandomCard();
 let secondcard = getRandomCard();
 
 function getRandomCard() {
-    return Math.floor(Math.random() * (13)) + 1; // range (0-12)+1 -> range[1-13]
+    let x = Math.floor(Math.random() * 13) + 1; // range (0-12)+1 -> range[1-13]
+
+    if (x === 1) {
+        return 11;
+    } else if (x >= 11 && x <= 13) {
+        return 10;
+    }
+    return x;
 }
 
 // let firstcard = 11;
@@ -28,6 +35,8 @@ let cardsArray = [];
 
 function renderGame(incomingcard) {
     // cardsEl.textContent = "Cards: " + firstcard + ", " + secondcard;
+
+
 
     if (incomingcard == null) {
         cardsArray.push(firstcard);
@@ -71,7 +80,6 @@ function playAgain() {
 
     cardsEl.textContent = "Cards: " + cardsArray;
     sumEl.textContent = "Sum: " + sum;
-
 }
 
 function newCard() {
