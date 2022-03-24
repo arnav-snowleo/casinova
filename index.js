@@ -6,8 +6,29 @@ if (age < 22) {
     alert("Entry allowed");
 }
 
-let firstcard = Math.floor(Math.random() * (12 - 2) + 2);
-let secondcard = Math.floor(Math.random() * (12 - 2) + 2);
+//player object
+let player = {
+    name: "Arnav",
+    coins: 185
+}
+let playerEl = document.querySelector("#player-el");
+playerEl.innerHTML = player.name + ": $" + player.coins;
+
+let firstcard = getRandomCard();
+let secondcard = getRandomCard();
+
+function getRandomCard() {
+    let x = Math.floor(Math.random() * 13) + 1; // range (0-12)+1 -> range[1-13]
+
+    if (x === 1) {
+        return 11;
+    } else if (x >= 11 && x <= 13) {
+        return 10;
+    }
+    return x;
+
+    // return Math.floor(Math.random() * 13) + 1;
+}
 
 // let firstcard = 11;
 // let secondcard = 10;
@@ -67,11 +88,10 @@ function playAgain() {
 
     cardsEl.textContent = "Cards: " + cardsArray;
     sumEl.textContent = "Sum: " + sum;
-
 }
 
 function newCard() {
-    let newCard = Math.floor(Math.random() * (12 - 2) + 2);
+    let newCard = getRandomCard();
     sum += newCard;
     renderGame(newCard);
 }
