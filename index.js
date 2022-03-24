@@ -10,7 +10,7 @@ let firstcard = getRandomCard();
 let secondcard = getRandomCard();
 
 function getRandomCard() {
-    return Math.floor(Math.random() * (12 - 2) + 2);
+    return Math.floor(Math.random() * (13)) + 1; // range (0-12)+1 -> range[1-13]
 }
 
 // let firstcard = 11;
