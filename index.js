@@ -22,7 +22,7 @@ let cardsEl = document.querySelector(".cards-el");
 
 let cardsArray = [];
 
-function checkSum(incomingcard) {
+function renderGame(incomingcard) {
     // cardsEl.textContent = "Cards: " + firstcard + ", " + secondcard;
 
     if (incomingcard == null) {
@@ -53,13 +53,25 @@ function disableNewCardBtn() {
     if (isOutOfGame) {
         alert("You are out of the game");
         document.querySelector("#new-card").disabled = true;
+        document.querySelector("#play").disabled = true;
     }
 }
 
-function resetAndPlayAgain() {}
+function playAgain() {
+    sum = 0;
+    cardsArray = [];
+
+    isOutOfGame = false;
+    document.querySelector("#new-card").disabled = false;
+    document.querySelector("#play").disabled = false;
+
+    cardsEl.textContent = "Cards: " + cardsArray;
+    sumEl.textContent = "Sum: " + sum;
+
+}
 
 function newCard() {
     let newCard = Math.floor(Math.random() * (12 - 2) + 2);
     sum += newCard;
-    checkSum(newCard);
+    renderGame(newCard);
 }
